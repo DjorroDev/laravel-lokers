@@ -34,10 +34,18 @@
                             <a class="nav-link" href="#">Post Job</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="" class="rounded-0 btn btn-outline-light">Login</a>
+                        </li>
+                        <li>
+                            <a href="" class="rounded-0 btn btn-light">Register</a>
+                        </li>
+                    </ul>
+                    {{-- <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </nav>

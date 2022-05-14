@@ -6,7 +6,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search jobs" aria-label="Search jobs"
                     aria-describedby="basic-addon2">
-                <button type="submit" class=" input-group-text btn btn-secondary">Search</button>
+                <button type="submit" class=" input-group-text btn btn-dark">Search</button>
             </div>
 
         </form>
@@ -22,12 +22,11 @@
                     <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
+                            <small class="card-text mb-2">Company</small>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in
                                 to
                                 additional content. This content is a little bit longer.</p>
-                            <button class="btn btn-dark btn mb-2">Apply job</button>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
+                            <button class="btn btn-dark btn">Apply job</button>
                         </div>
                     </div>
                 </div>
@@ -43,12 +42,11 @@
                     <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
+                            <small class="card-text mb-2">Company</small>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in
                                 to
                                 additional content. This content is a little bit longer.</p>
-                            <button class="btn btn-dark btn mb-2">Apply job</button>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
+                            <button class="btn btn-dark btn">Apply job</button>
                         </div>
                     </div>
                 </div>
@@ -64,12 +62,11 @@
                     <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
+                            <small class="card-text mb-2">Company</small>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in
                                 to
                                 additional content. This content is a little bit longer.</p>
-                            <button class="btn btn-dark btn mb-2">Apply job</button>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
+                            <button class="btn btn-dark btn">Apply job</button>
                         </div>
                     </div>
                 </div>
