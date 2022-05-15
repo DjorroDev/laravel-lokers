@@ -17,16 +17,26 @@
                 <div class="card mb-3">
                     <div class=" row g-0">
                         <div class="col-md-3">
-                            <img src="https://source.unsplash.com/200x200/?seeker" style="max-height: 300px;"
-                                class="img-fluid rounded-start overflow-hidden border-right" alt="...">
+                            <a href="/jobs/{{ $listing->id }}" class="text-decoration-none">
+                                <img src="https://source.unsplash.com/300x300/?seeker" style="max-height: 300px;"
+                                    class="img-fluid rounded-start overflow-hidden border-right" alt="...">
+                            </a>
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">
-                                <h5 class="card-title"><a class="text-decoration-none text-dark"
-                                        href="/jobs/{{ $listing->id }}">{{ $listing->title }}</a></h5>
-                                <small class="card-text mb-2">{{ $listing->company }}</small>
-                                <p class="card-text">{{ $listing->description }}</p>
-                                <button class="btn btn-dark btn">Apply job</button>
+                                <h4 class="card-title border-bottom pb-2"><a class="text-decoration-none text-dark"
+                                        href="/jobs/{{ $listing->id }}">{{ $listing->title }}</a></h4>
+                                <div class="col mb-2">
+                                    <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
+                                    <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
+                                    <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
+                                </div>
+                                <small class="lead">{{ $listing->company }}</small>
+                                <small class="d-block"> {{ $listing->website }} </small>
+                                <small class="d-block border-bottom pb-2"><i style="width:16px; height:16px"
+                                        data-feather="map-pin"></i>
+                                    {{ $listing->location }}</small>
+                                <button class="mt-3 btn btn-dark btn">Apply job</button>
                             </div>
                         </div>
                     </div>
