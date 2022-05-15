@@ -12,64 +12,25 @@
         </form>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card mb-3">
-                <div class=" row g-0">
-                    <div class="col-md-3">
-                        <img src="https://source.unsplash.com/200x200/?seeker" style="max-height: 300px;"
-                            class="img-fluid rounded-start overflow-hidden border-right" alt="...">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <small class="card-text mb-2">Company</small>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to
-                                additional content. This content is a little bit longer.</p>
-                            <button class="btn btn-dark btn">Apply job</button>
+        @foreach ($listings as $listing)
+            <div class="col-md-10">
+                <div class="card mb-3">
+                    <div class=" row g-0">
+                        <div class="col-md-3">
+                            <img src="https://source.unsplash.com/200x200/?seeker" style="max-height: 300px;"
+                                class="img-fluid rounded-start overflow-hidden border-right" alt="...">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title"><a class="text-decoration-none text-dark"
+                                        href="/jobs/{{ $listing->id }}">{{ $listing->title }}</a></h5>
+                                <small class="card-text mb-2">{{ $listing->company }}</small>
+                                <p class="card-text">{{ $listing->description }}</p>
+                                <button class="btn btn-dark btn">Apply job</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-10">
-            <div class="card mb-3">
-                <div class=" row g-0">
-                    <div class="col-md-3">
-                        <img src="https://source.unsplash.com/200x200/?seeker" style="max-height: 300px;"
-                            class="img-fluid rounded-start overflow-hidden border-right" alt="...">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <small class="card-text mb-2">Company</small>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to
-                                additional content. This content is a little bit longer.</p>
-                            <button class="btn btn-dark btn">Apply job</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="card mb-3">
-                <div class=" row g-0">
-                    <div class="col-md-3">
-                        <img src="https://source.unsplash.com/200x200/?seeker" style="max-height: 300px;"
-                            class="img-fluid rounded-start overflow-hidden border-right" alt="...">
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <small class="card-text mb-2">Company</small>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in
-                                to
-                                additional content. This content is a little bit longer.</p>
-                            <button class="btn btn-dark btn">Apply job</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     @endsection
