@@ -2,10 +2,10 @@
 
 @section('container')
     <div class="row justify-content-center">
-        <form class="mt-3 col-10" action="">
+        <form class="mt-3 col-10" action="/jobs" method="GET">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search jobs" aria-label="Search jobs"
-                    aria-describedby="basic-addon2">
+                <input name="search" type="text" class="form-control" placeholder="Search jobs" aria-label="Search jobs"
+                    aria-describedby="basic-addon2" value="{{ request('search') }}">
                 <button type="submit" class=" input-group-text btn btn-dark">Search</button>
             </div>
 
@@ -26,11 +26,7 @@
                             <div class="card-body">
                                 <h4 class="card-title border-bottom pb-2"><a class="text-decoration-none text-dark"
                                         href="/jobs/{{ $listing->id }}">{{ $listing->title }}</a></h4>
-                                <div class="col mb-2">
-                                    <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
-                                    <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
-                                    <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
-                                </div>
+                                <x-tags :tagsCsv="$listing->tags" />
                                 <small class="lead">{{ $listing->company }}</small>
                                 <small class="d-block"> {{ $listing->website }} </small>
                                 <small class="d-block border-bottom pb-2"><i style="width:16px; height:16px"
