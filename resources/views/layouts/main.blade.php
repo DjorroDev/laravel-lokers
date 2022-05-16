@@ -38,10 +38,10 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li>
-                            <a href="" class="rounded-0 btn btn-outline-light">Login</a>
+                            <a href="/login" class="rounded-0 btn btn-outline-light">Login</a>
                         </li>
                         <li>
-                            <a href="" class="rounded-0 btn btn-light">Register</a>
+                            <a href="/register" class="rounded-0 btn btn-light">Register</a>
                         </li>
                     </ul>
                     {{-- <form class="d-flex">
@@ -58,6 +58,11 @@
         </div>
     </main>
 
+    {{-- <footer class="text-white">
+        <div class="bg-dark py-2">
+            <p class="container">&copy; 2022 Company, Inc. All rights reserved.</p>
+        </div>
+    </footer> --}}
     <script>
         feather.replace()
     </script>
