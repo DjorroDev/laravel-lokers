@@ -5,11 +5,7 @@
     <div class="row justify-content-center">
         <article class="border-1 shadow col-md-8 mb-5">
             <h3>{{ $listing->title }}</h3>
-            <div class="col mb-2">
-                <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
-                <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
-                <a href="" class="me-2 badge bg-dark text-decoration-none">vue</a>
-            </div>
+            <x-tags :tagsCsv="$listing->tags"></x-tags>
             <h5 class="">{{ $listing->company }}</h5>
             <h6> {{ $listing->website }} </h6>
             <h6 class="border-bottom pb-3"><i style="width:16px; height:16px" data-feather="map-pin"></i>
