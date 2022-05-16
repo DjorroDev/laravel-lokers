@@ -24,7 +24,11 @@ Route::get('/jobs', [ListingController::class, 'index']);
 Route::get('/jobs/{listing}', [ListingController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/register/seeker', [RegisterController::class, 'seeker']);
+Route::post('/register/seeker', [RegisterController::class, 'storeSeeker']);
+
 Route::get('/register/company', [RegisterController::class, 'recruiter']);
+Route::post('/register/company', [RegisterController::class, 'storeRecruiter']);
