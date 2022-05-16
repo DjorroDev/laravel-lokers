@@ -29,4 +29,13 @@ class LoginController extends Controller
 
         return back()->with('error', 'Email or password does not match');
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }

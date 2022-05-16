@@ -37,14 +37,35 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li>
-                            <a href="/login" class="rounded-0 btn btn-outline-light">Login</a>
-                        </li>
-                        <li>
-                            <a href="/register" class="rounded-0 btn btn-light">Register</a>
-                        </li>
-                    </ul>
-                    {{-- <form class="d-flex">
+                        @auth
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                    aria-expanded="false">{{ auth()->user()->name }} <i class="bi bi-person-circle"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                                    <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <form action="/logout" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item"><i
+                                                    class="bi bi-box-arrow-right"></i>
+                                                Logout</button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="/login" class="rounded-0 btn btn-outline-light">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="/register" class="rounded-0 btn btn-light">Register</a>
+                                    </li>
+                                @endauth
+                            </ul>
+                            {{-- <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </form> --}}

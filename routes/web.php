@@ -25,6 +25,8 @@ Route::get('/jobs/{listing}', [ListingController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/register/seeker', [RegisterController::class, 'seeker']);
