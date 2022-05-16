@@ -39,8 +39,9 @@
                     <ul class="navbar-nav">
                         @auth
                             <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                                    aria-expanded="false">{{ auth()->user()->name }} <i class="bi bi-person-circle"></i>
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="lh-md"
+                                    href="#" role="button" aria-expanded="false">{{ auth()->user()->name }} <i
+                                        class="ms-1" style="width:20px; height:20px" data-feather="user"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Profil</a></li>
@@ -65,10 +66,6 @@
                                     </li>
                                 @endauth
                             </ul>
-                            {{-- <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
-                    </form> --}}
                 </div>
             </div>
         </nav>

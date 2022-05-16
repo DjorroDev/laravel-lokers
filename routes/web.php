@@ -34,3 +34,7 @@ Route::post('/register/seeker', [RegisterController::class, 'storeSeeker']);
 
 Route::get('/register/company', [RegisterController::class, 'recruiter']);
 Route::post('/register/company', [RegisterController::class, 'storeRecruiter']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+});
