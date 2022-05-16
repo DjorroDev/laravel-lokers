@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('desc')->nullable();
             $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('isRecruiter');
+            $table->boolean('is_recruiter');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
