@@ -14,6 +14,7 @@
     <link href="/css/dashboard.css" rel="stylesheet">
 
     {{-- Trix editor --}}
+
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
     <script type="text/javascript" src="/js/trix.js"></script>
 </head>
@@ -52,8 +53,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('dashboard/list*') ? 'active' : '' }}"
-                                href="/dashboard/posts">
+                            <a class="nav-link {{ Request::is('dashboard/lists*') ? 'active' : '' }}"
+                                href="/dashboard/lists">
                                 <span data-feather="briefcase"></span>
                                 Job list
                             </a>
