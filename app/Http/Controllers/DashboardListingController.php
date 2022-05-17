@@ -37,7 +37,20 @@ class DashboardListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|min:5',
+            'tags' => 'required',
+            'website' => 'required',
+            'description' => 'required',
+            'location' => 'required'
+        ]);
+
+        $validatedData['company'] = auth()->user()->name;
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Listing::create($validatedData);
+
+        return redirect('/dashboard/lists')->with('success', 'New job has been listed');
     }
 
     /**

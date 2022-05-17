@@ -6,9 +6,12 @@
     </div>
     <h2>Job Lists</h2>
     <a href="/dashboard/lists/create" class="btn btn-dark my-3">Create new list</a>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-8">
-            <table class="table table-striped mb-6">
+            <x-flash-message type="success" />
+        </div>
+        <div class="col-md-8">
+            <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">No</th>
