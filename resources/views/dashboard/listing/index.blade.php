@@ -30,15 +30,20 @@
                                 <x-tags :tagsCsv="$list->tags" readOnly="true" />
                             </td>
                             <td> {{ $list->created_at->diffForhumans() }} </td>
-                            <td><a href="" class="badge bg-dark">
+                            <td><a href="/dashboard/lists/{{ $list->id }}" class="badge bg-dark">
                                     <i data-feather="eye"></i>
                                 </a>
                                 <a href="" class="badge bg-secondary">
                                     <i data-feather="edit"></i>
                                 </a>
-                                <a href="" class="badge bg-danger">
-                                    <i data-feather="x-circle"></i>
-                                </a>
+                                <form class="d-inline" method="POST" action="/dashboard/lists/{{ $list->id }}">
+                                    @method('delete')
+                                    @csrf
+                                    <button onclick="return confirm('Are you sure want to delete')"
+                                        class="badge bg-danger border-0 ">
+                                        <i data-feather="x-circle"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

@@ -56,21 +56,23 @@ class DashboardListingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Listing  $list
      * @return \Illuminate\Http\Response
      */
-    public function show(Listing $listing)
+    public function show(Listing $list)
     {
-        //
+        return view('job', [
+            'listing' => $list
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Listing  $list
      * @return \Illuminate\Http\Response
      */
-    public function edit(Listing $listing)
+    public function edit(Listing $list)
     {
         //
     }
@@ -79,10 +81,10 @@ class DashboardListingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Listing  $list
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Listing $listing)
+    public function update(Request $request, Listing $list)
     {
         //
     }
@@ -90,11 +92,13 @@ class DashboardListingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Listing  $list
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Listing $listing)
+    public function destroy(Listing $list)
     {
-        //
+        Listing::destroy($list->id);
+
+        return redirect('/dashboard/lists')->with('success', 'List has been deleted');
     }
 }
