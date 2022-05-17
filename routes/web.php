@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardListingController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -27,6 +28,7 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/profile');
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/register/seeker', [RegisterController::class, 'seeker']);
@@ -38,3 +40,5 @@ Route::post('/register/company', [RegisterController::class, 'storeRecruiter']);
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
+
+Route::resource('/dashboard/lists', DashboardListingController::class);
