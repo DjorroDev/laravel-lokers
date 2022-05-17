@@ -11,7 +11,8 @@
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" name="title" placeholder="Job's title"
-                        class="form-control @error('title') is-invalid @enderror" aria-describedby="title">
+                        class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}"
+                        aria-describedby="title">
                     <div class="invalid-feedback">
                         @error('title')
                             {{ $message }}
@@ -21,7 +22,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tags (comma seperated)</label>
-                    <input type="text" name="tags" placeholder="example: developer, progammer, etc"
+                    <input type="text" name="tags" value="{{ old('tags') }}"
+                        placeholder="example: developer, progammer, etc"
                         class="form-control @error('tags') is-invalid @enderror">
                     <div class="invalid-feedback">
                         @error('tags')
@@ -32,7 +34,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Location</label>
-                    <input type="text" name="location" placeholder="Address place"
+                    <input type="text" name="location" value="{{ old('location') }}" placeholder="Address place"
                         class="form-control @error('location') is-invalid @enderror">
                     <div class="invalid-feedback">
                         @error('location')
@@ -43,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Website</label>
-                    <input type="text" name="website" placeholder="Example.com"
+                    <input type="text" name="website" value="{{ old('website') }}" placeholder="Example.com"
                         class="form-control @error('website') is-invalid @enderror">
                     <div class="invalid-feedback">
                         @error('website')
@@ -59,7 +61,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <input id="x" name="description" type="hidden" name="content">
+                    <input id="x" name="description" type="hidden" value="{{ old('description') }}" name="content">
                     <trix-editor input="x"></trix-editor>
                 </div>
 
