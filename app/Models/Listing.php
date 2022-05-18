@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Listing extends Model
 {
@@ -26,5 +27,10 @@ class Listing extends Model
                 $query->where('tags', 'like', '%' . $search . '%');
             });
         });
+    }
+
+    public function user()
+    {
+        return $this->BelongsTo(User::class);
     }
 }
