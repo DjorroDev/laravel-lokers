@@ -10,6 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/feather-icons"></script>
+
+    {{-- Trix editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+
 </head>
 
 <body>
@@ -44,7 +49,7 @@
                                         class="ms-1" style="width:20px; height:20px" data-feather="user"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
                                     <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
