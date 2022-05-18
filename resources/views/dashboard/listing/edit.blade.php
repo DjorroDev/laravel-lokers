@@ -2,17 +2,18 @@
 
 @section('main')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h3 class="h1">Create new job list</h3>
+        <h3 class="h1">Edit list</h3>
     </div>
     <div class="row">
         <div class="col-md-8 mb-5">
-            <form method="post" action="/dashboard/lists">
+            <form method="post" action="/dashboard/lists/{{ $listing->id }}">
+                @method('put')
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" name="title" placeholder="Job's title"
-                        class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}"
-                        aria-describedby="title">
+                        class="form-control @error('title') is-invalid @enderror"
+                        value="{{ old('title', $listing->title) }}" aria-describedby="title">
                     <div class="invalid-feedback">
                         @error('title')
                             {{ $message }}
@@ -22,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tags (comma seperated)</label>
-                    <input type="text" name="tags" value="{{ old('tags') }}"
+                    <input type="text" name="tags" value="{{ old('tags', $listing->tags) }}"
                         placeholder="example: developer, progammer, etc"
                         class="form-control @error('tags') is-invalid @enderror">
                     <div class="invalid-feedback">
@@ -34,8 +35,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Location</label>
-                    <input type="text" name="location" value="{{ old('location') }}" placeholder="Address place"
-                        class="form-control @error('location') is-invalid @enderror">
+                    <input type="text" name="location" value="{{ old('location', $listing->location) }}"
+                        placeholder="Address place" class="form-control @error('location') is-invalid @enderror">
                     <div class="invalid-feedback">
                         @error('location')
                             {{ $message }}
@@ -45,8 +46,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Website</label>
-                    <input type="text" name="website" value="{{ old('website') }}" placeholder="Example.com"
-                        class="form-control @error('website') is-invalid @enderror">
+                    <input type="text" name="website" value="{{ old('website', $listing->website) }}"
+                        placeholder="Example.com" class="form-control @error('website') is-invalid @enderror">
                     <div class="invalid-feedback">
                         @error('website')
                             is-invalid
@@ -61,11 +62,12 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <input id="x" name="description" type="hidden" value="{{ old('description') }}" name="content">
+                    <input id="x" name="description" type="hidden" value="{{ old('description', $listing->description) }}"
+                        name="content">
                     <trix-editor input="x"></trix-editor>
                 </div>
 
-                <button type="submit" class="btn btn-dark">Create list</button>
+                <button type="submit" class="btn btn-dark">Save change</button>
             </form>
         </div>
     </div>

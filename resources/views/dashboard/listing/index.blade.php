@@ -33,7 +33,7 @@
                             <td><a href="/dashboard/lists/{{ $list->id }}" class="badge bg-dark">
                                     <i data-feather="eye"></i>
                                 </a>
-                                <a href="" class="badge bg-secondary">
+                                <a href="/dashboard/lists/{{ $list->id }}/edit" class="badge bg-secondary">
                                     <i data-feather="edit"></i>
                                 </a>
                                 <form class="d-inline" method="POST" action="/dashboard/lists/{{ $list->id }}">

@@ -61,7 +61,12 @@ class DashboardListingController extends Controller
      */
     public function show(Listing $list)
     {
-        return view('job', [
+        // Prevent another user access another lists
+        if (auth()->user()->id !== $list->user_id) {
+            abort(403);
+        }
+
+        return view('dashboard.listing.show', [
             'listing' => $list
         ]);
     }
@@ -74,7 +79,14 @@ class DashboardListingController extends Controller
      */
     public function edit(Listing $list)
     {
-        //
+        // Prevent another user access another lists
+        if (auth()->user()->id !== $list->user_id) {
+            abort(403);
+        }
+
+        return view('dashboard.listing.edit', [
+            'listing' => $list,
+        ]);
     }
 
     /**
@@ -86,7 +98,19 @@ class DashboardListingController extends Controller
      */
     public function update(Request $request, Listing $list)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|min:5',
+            'tags' => 'required',
+            'website' => 'required',
+            'description' => 'required',
+            'location' => 'required'
+        ]);
+
+
+        Listing::where('id', $list->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/lists')->with('success', 'List has been updated');
     }
 
     /**
