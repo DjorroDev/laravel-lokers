@@ -16,7 +16,7 @@
             <span data-feather="x-circle"></span> Delete
         </button>
     </form>
-    <article class="border-1 shadow col-md-8 mt-3 mb-5 p-3">
+    <article class="border shadow col-md-8 mt-3 mb-5 p-3">
         <h3>{{ $listing->title }}</h3>
         <x-tags :tagsCsv="$listing->tags"></x-tags>
         <h5 class="">{{ $listing->company }}</h5>
