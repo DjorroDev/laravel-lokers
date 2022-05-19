@@ -4,18 +4,19 @@
     <div class="row justify-content-center">
         <x-box class="col-md-8">
             <h1 class="text-center">Profile</h1>
-            <img src="https://source.unsplash.com/200x200/?seeker" alt="job"
-                class="d-block me-auto ms-auto mb-3 rounded-circle">
-            <form method="post" action="/dashboard/lists">
+            <x-flash-message type="success" />
+            <img src="{{ asset('storage/' . $user->image) }}" alt="job" style="width: 250px"
+                class="d-block me-auto  ms-auto mb-3 rounded-circle">
+            <form method="post" enctype="multipart/form-data" action="/profile">
                 @method('put')
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Full name</label>
-                    <input type="text" name="title" placeholder="Job's title"
-                        class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $user->name) }}"
-                        aria-describedby="title">
+                    <input type="text" name="name" placeholder="Your name"
+                        class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}"
+                        aria-describedby="name">
                     <div class="invalid-feedback">
-                        @error('title')
+                        @error('name')
                             {{ $message }}
                         @enderror
                     </div>
@@ -23,22 +24,21 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email address</label>
-                    <input type="email" name="tags" value="{{ old('tags', $user->email) }}"
-                        placeholder="example: developer, progammer, etc"
-                        class="form-control @error('tags') is-invalid @enderror">
+                    <input type="email" name="email" value="{{ old('email', $user->email) }}"
+                        placeholder="example: email@example.com" class="form-control @error('email') is-invalid @enderror">
                     <div class="invalid-feedback">
-                        @error('tags')
+                        @error('email')
                             {{ $message }}
                         @enderror
                     </div>
 
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Location</label>
-                    <input type="text" name="location" value="{{ old('location', $user->location) }}"
-                        placeholder="Address place" class="form-control @error('location') is-invalid @enderror">
+                    <label class="form-label">Address</label>
+                    <input type="text" name="address" value="{{ old('address', $user->address) }}"
+                        placeholder="Address place" class="form-control @error('address') is-invalid @enderror">
                     <div class="invalid-feedback">
-                        @error('location')
+                        @error('address')
                             {{ $message }}
                         @enderror
                     </div>
@@ -46,7 +46,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="formFile">
+                    @if ($user->image)
+                        <img src="{{ asset('storage/' . $user->image) }}"
+                            class="img-fluid img-preview col-md-5 mb-2 d-block">
+                    @else
+                        <img class="img-fluid img-preview col-md-5 mb-2">
+                    @endif
+                    <input name="image" onchange="previewImage()" class="form-control @error('image') is-invalid @enderror"
+                        type="file" id="image">
                     <div class="invalid-feedback">
                         @error('image')
                             is-invalid
@@ -55,7 +62,15 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Resume or CV</label>
-                    <input class="form-control @error('file') is-invalid @enderror" type="file" id="formFile">
+                    @if ($user->file)
+                        <div class="border border-dark mb-3 p-2">
+                            <i data-feather="file"></i> <a class="text-decoration-none text-dark" target="_blank"
+                                href="{{ asset('storage/' . $user->file) }}">Download File</a>
+                        </div>
+                    @else
+                    @endif
+
+                    <input name="file" class="form-control @error('file') is-invalid @enderror" type="file" id="formFile">
                     <div class="invalid-feedback">
                         @error('file')
                             is-invalid
@@ -64,13 +79,12 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Description (Tell us more about yourself)</label>
-                    @error('description')
+                    @error('desc')
                         <div class="alert alert-danger" role="alert">
                             {{ $message }}
                         </div>
                     @enderror
-                    <input id="x" name="description" type="hidden" value="{{ old('description', $user->description) }}"
-                        name="content">
+                    <input id="x" name="desc" type="hidden" value="{{ old('desc', $user->desc) }}" name="content">
                     <trix-editor input="x"></trix-editor>
                 </div>
 
@@ -78,4 +92,17 @@
             </form>
         </x-box>
     </div>
+
+    <script>
+        // Previewing Image
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const blob = URL.createObjectURL(image.files[0]);
+            imgPreview.src = blob;
+        }
+    </script>
 @endsection
