@@ -7,8 +7,8 @@
             <h3>{{ $listing->title }}</h3>
             <x-tags :tagsCsv="$listing->tags"></x-tags>
             <h5 class="">{{ $listing->company }}</h5>
-            <h6> <i style="width:16px; height:16px" data-feather="link"></i> {{ $listing->website }} </h6>
-            <h6 class="border-bottom pb-3"><i style="width:16px; height:16px" data-feather="map-pin"></i>
+            <h6> <i class="icon-16" data-feather="link"></i> {{ $listing->website }} </h6>
+            <h6 class="border-bottom pb-3"><i class="icon-16" data-feather="map-pin"></i>
                 {{ $listing->location }}</h6>
             <p class="mt-4 text-start"> {!! $listing->description !!} </p>
             <div class="border-bottom mb-3"></div>
