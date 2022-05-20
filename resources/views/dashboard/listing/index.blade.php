@@ -36,14 +36,10 @@
                                 <a href="/dashboard/lists/{{ $list->id }}/edit" class="badge bg-secondary">
                                     <i data-feather="edit"></i>
                                 </a>
-                                <form class="d-inline" method="POST" action="/dashboard/lists/{{ $list->id }}">
-                                    @method('delete')
-                                    @csrf
-                                    <button onclick="return confirm('Are you sure want to delete')"
-                                        class="badge bg-danger border-0 ">
-                                        <i data-feather="x-circle"></i>
-                                    </button>
-                                </form>
+                                <button class="showModal badge bg-danger border-0" data-id="{{ $list->id }}"
+                                    data-title="{{ $list->title }}" data-bs-toggle="modal" data-bs-target="#modal"><i
+                                        data-feather="x-circle"></i></button>
+
                             </td>
                         </tr>
                     @endforeach
@@ -51,4 +47,36 @@
             </table>
         </div>
     </div>
+    <x-modal>
+        <x-slot name="header">
+            Delete list
+        </x-slot>
+        <x-slot name="body">
+            <p>Are you sure want to delete?</p>
+            <div id="modalBody"></div>
+        </x-slot>
+        <x-slot name="footer">
+            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">cancel</button>
+            <form class="d-inline" id="formModal" method="POST" action="/dashboard/lists/">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-dark">
+                    Delete
+                </button>
+            </form>
+        </x-slot>
+    </x-modal>
+
+    <script>
+        const allShow = document.querySelectorAll('.showModal');
+        const title = document.querySelector('#modalBody');
+        const form = document.querySelector('#formModal')
+
+        allShow.forEach(show => {
+            show.addEventListener('click', () => {
+                title.innerHTML = 'job\'s title: ' + show.dataset.title;
+                form.action = '/dashboard/lists/' + show.dataset.id;
+            })
+        });
+    </script>
 @endsection
