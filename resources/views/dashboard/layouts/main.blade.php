@@ -60,8 +60,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}"
-                                href="/dashboard/posts">
+                            <a class="nav-link {{ Request::is('dashboard/applications*') ? 'active' : '' }}"
+                                href="/dashboard/applications">
                                 <span data-feather="file-text"></span>
                                 Applicants
                             </a>
