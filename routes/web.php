@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DashboardListingController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\LoginController;
@@ -45,3 +46,6 @@ Route::get('/dashboard', function () {
 });
 
 Route::resource('/dashboard/lists', DashboardListingController::class);
+
+Route::get('/dashboard/applications', [ApplicationController::class, 'index']);
+Route::get('/dashboard/applications/{application}', [ApplicationController::class, 'show']);
