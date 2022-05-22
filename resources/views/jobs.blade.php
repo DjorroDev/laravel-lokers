@@ -33,7 +33,9 @@
                                 <small class="d-block border-bottom pb-2"><i class="icon-16"
                                         data-feather="map-pin"></i>
                                     {{ $listing->location }}</small>
-                                <button class="mt-3 btn btn-dark btn" data-bs-toggle="modal" data-bs-target="#modal">Apply
+                                <button class="showModal mt-3 btn btn-dark btn" data-id="{{ $listing->id }}"
+                                    data-title="{{ $listing->title }}" data-bs-toggle="modal"
+                                    data-bs-target="#modal">Apply
                                     job</button>
                             </div>
                         </div>
@@ -47,7 +49,7 @@
     <!-- Modal -->
     <x-modal>
         <x-slot name="header">
-            Apply to programmer
+            <div id="modalHeader">P</div>
         </x-slot>
         <x-slot name="body">
             Your profile details will be forwarded to the company for review. Make sure already update your profile.
@@ -57,4 +59,18 @@
             <button type="button" class="btn btn-dark">Apply</button>
         </x-slot>
     </x-modal>
+
+    <script>
+        const allShow = document.querySelectorAll('.showModal');
+        const title = document.querySelector('#modalHeader');
+        const form = document.querySelector('#formModal')
+
+        allShow.forEach(show => {
+            show.addEventListener('click', () => {
+                console.log(show.dataset.id)
+                title.innerHTML = 'Apply to ' + show.dataset.title;
+                // form.action = '/dashboard/lists/' + show.dataset.id;
+            })
+        });
+    </script>
 @endsection
