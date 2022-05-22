@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 use \App\Models\Listing;
+use \App\Models\Application;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        Application::factory(10)->create();
 
         Listing::factory(10)->create();
     }
