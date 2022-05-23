@@ -20,4 +20,18 @@ class ApplicationController extends Controller
             'app' => $application
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'receiver_id' => 'required'
+        ]);
+
+        $validatedData['applicant_id'] = auth()->user()->id;
+
+        Application::create($validatedData);
+
+        return redirect('/jobs')->with('success', 'Jobs application has been applied!');
+    }
 }

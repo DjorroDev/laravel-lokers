@@ -49,3 +49,4 @@ Route::resource('/dashboard/lists', DashboardListingController::class);
 
 Route::get('/dashboard/applications', [ApplicationController::class, 'index']);
 Route::get('/dashboard/applications/{application}', [ApplicationController::class, 'show']);
+Route::post('/jobs/apply/{applications}', [ApplicationController::class, 'store']);

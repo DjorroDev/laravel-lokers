@@ -8,8 +8,12 @@
                     aria-describedby="basic-addon2" value="{{ request('search') }}">
                 <button type="submit" class=" input-group-text btn btn-dark">Search</button>
             </div>
-
         </form>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <x-flash-message type="success" />
+        </div>
     </div>
     <div class="row justify-content-center mb-2">
         @foreach ($listings as $listing)
@@ -34,8 +38,8 @@
                                         data-feather="map-pin"></i>
                                     {{ $listing->location }}</small>
                                 <button class="showModal mt-3 btn btn-dark btn" data-id="{{ $listing->id }}"
-                                    data-title="{{ $listing->title }}" data-bs-toggle="modal"
-                                    data-bs-target="#modal">Apply
+                                    data-title="{{ $listing->title }}" data-receiver="{{ $listing->user->id }}"
+                                    data-bs-toggle="modal" data-bs-target="#modal">Apply
                                     job</button>
                             </div>
                         </div>
@@ -56,20 +60,29 @@
         </x-slot>
         <x-slot name="footer">
             <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-dark">Apply</button>
+            <form action="/jobs/apply/" id="formModal" method="post">
+                @csrf
+                <input type="hidden" id="receiver" name="receiver_id" value="">
+                <input type="hidden" id="title" name="title" value="">
+                <button type="submit" class="btn btn-dark">Apply</button>
+            </form>
         </x-slot>
     </x-modal>
 
     <script>
         const allShow = document.querySelectorAll('.showModal');
         const title = document.querySelector('#modalHeader');
-        const form = document.querySelector('#formModal')
+        const form = document.querySelector('#formModal');
+        const inputReceiver = document.querySelector('#receiver');
+        const inputTitle = document.querySelector('#title');
 
         allShow.forEach(show => {
             show.addEventListener('click', () => {
-                console.log(show.dataset.id)
+                console.log(title.innerHTML);
                 title.innerHTML = 'Apply to ' + show.dataset.title;
-                // form.action = '/dashboard/lists/' + show.dataset.id;
+                form.action = '/jobs/apply/' + show.dataset.id;
+                inputReceiver.value = show.dataset.receiver;
+                inputTitle.value = show.dataset.title;
             })
         });
     </script>
