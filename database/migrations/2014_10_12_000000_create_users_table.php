@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_recruiter')->default(false);
             $table->string('password');
-            $table->string('image')->nullable();
+            $table->string('image')->default('noimage.jpg');
             $table->string('file')->nullable();
             $table->rememberToken();
             $table->timestamps();
