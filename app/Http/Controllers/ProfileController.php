@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -14,7 +15,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function update(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required',
@@ -29,10 +30,16 @@ class ProfileController extends Controller
         $user = auth()->user();
 
         if ($request->file('image')) {
+            if ($user->img !== 'noimage.jpg') {
+                Storage::delete($user->image);
+            }
             $validatedData['image'] = $request->file('image')->store('profile-images');
         }
 
         if ($request->file('file')) {
+            if ($user->file) {
+                Storage::delete($user->file);
+            }
             $validatedData['file'] = $request->file('file')->store('files');
         }
 
