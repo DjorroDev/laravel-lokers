@@ -12,20 +12,33 @@
                 {{ $listing->location }}</h6>
             <p class="mt-4 text-start"> {!! $listing->description !!} </p>
             <div class="border-bottom mb-3"></div>
-            <button type="submit" class="mb-3 btn btn-dark">Apply Job</button>
+            <button data-bs-toggle="modal" data-bs-target="#modal" class="mb-3 btn btn-dark">Apply Job</button>
+
         </article>
         <div class="col-md-4">
             <article class="border shadow col-md-10 text-center py-3 px-1 mb-5">
                 <h3 class="mb-2 border-bottom pb-2 mx-3">Company Profile</h3>
                 <h5>{{ $listing->user->name }}</h5>
-                @if ($listing->user->image)
-                    <img src="{{ asset('storage/' . $listing->user->image) }}" alt="company picture" style="width: 200px"
-                        class="img-fluid">
-                @else
-                    <img src="https://source.unsplash.com/200x200/?seeker" alt="job" class="img-fluid">
-                @endif
+                <img src="{{ asset('storage/' . $listing->user->image) }}" alt="company picture" style="width: 200px"
+                    class="img-fluid">
                 <div class="p-3 text-start small"> {!! $listing->user->desc !!} </div>
             </article>
         </div>
     </div>
+
+    <x-modal>
+        <x-slot name="header">Apply to {{ $listing->title }} </x-slot>
+        <x-slot name="body">
+            Your profile details will be forwarded to the company for review. Make sure already update your profile.
+        </x-slot>
+        <x-slot name="footer">
+            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+            <form action="/jobs/apply/{{ $listing->id }}" id="formModal" method="post">
+                @csrf
+                <input type="hidden" id="receiver" name="receiver_id" value="{{ $listing->user->id }}">
+                <input type="hidden" id="title" name="title" value=" {{ $listing->title }} ">
+                <button type="submit" class="btn btn-dark">Apply</button>
+            </form>
+        </x-slot>
+    </x-modal>
 @endsection
