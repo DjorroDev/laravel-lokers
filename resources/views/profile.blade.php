@@ -5,7 +5,7 @@
         <x-box class="col-md-8">
             <h1 class="text-center">Profile</h1>
             <x-flash-message type="success" />
-            <img src="{{ asset($user->image) }}" alt="job" style=""
+            <img src="{{ asset($user->image) }}" alt="job" style="height:250px"
                 class="d-block me-auto ms-auto mb-3 rounded-circle img-fluid overflow-hidden">
             <form method="post" enctype="multipart/form-data" action="/profile">
                 @method('put')
