@@ -27,18 +27,28 @@
     </div>
 
     <x-modal>
-        <x-slot name="header">Apply to {{ $listing->title }} </x-slot>
-        <x-slot name="body">
-            Your profile details will be forwarded to the company for review. Make sure already update your profile.
-        </x-slot>
-        <x-slot name="footer">
-            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-            <form action="/jobs/apply/{{ $listing->id }}" id="formModal" method="post">
-                @csrf
-                <input type="hidden" id="receiver" name="receiver_id" value="{{ $listing->user->id }}">
-                <input type="hidden" id="title" name="title" value=" {{ $listing->title }} ">
-                <button type="submit" class="btn btn-dark">Apply</button>
-            </form>
-        </x-slot>
+        @auth
+            <x-slot name="header">Apply to {{ $listing->title }} </x-slot>
+            <x-slot name="body">
+                Your profile details will be forwarded to the company for review. Make sure already update your profile.
+            </x-slot>
+            <x-slot name="footer">
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                <form action="/jobs/apply/{{ $listing->id }}" id="formModal" method="post">
+                    @csrf
+                    <input type="hidden" id="receiver" name="receiver_id" value="{{ $listing->user->id }}">
+                    <input type="hidden" id="title" name="title" value=" {{ $listing->title }} ">
+                    <button type="submit" class="btn btn-dark">Apply</button>
+                </form>
+            </x-slot>
+        @else
+            <x-slot name="header">Apply to {{ $listing->title }} </x-slot>
+            <x-slot name="body">
+                You need an account to apply a job Please login or register to make an account.
+            </x-slot>
+            <x-slot name="footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+            </x-slot>
+        @endauth
     </x-modal>
 @endsection
