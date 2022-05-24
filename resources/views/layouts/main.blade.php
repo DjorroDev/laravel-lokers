@@ -53,7 +53,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                    <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
+                                    @can('recruit')
+                                        <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
+                                    @endcan
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
