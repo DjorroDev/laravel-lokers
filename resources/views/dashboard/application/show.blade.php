@@ -1,24 +1,25 @@
 @extends('dashboard.layouts.main')
 
 @section('main')
-    <div class=" d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+    <div class=" d-flex flex-column flex-wrap flex-md-nowrap align-items-start pt-3 mt-2 pb-1 mb-2 border-bottom">
         <h1 class="h2">Details applicant</h1>
+        <h4 class="mb-2">Position apply: {{ $app->title }}</h4>
     </div>
-    <a class="btn btn-dark me-2" href="/dashboard/applications/"> <span data-feather="arrow-left"></span> Back to all
+    <a class="btn btn-dark me-2" href="/dashboard/applications/"> <span data-feather="arrow-left"
+            class="mb-1"></span> Back to all
         applications</a>
-    <a class="btn btn-outline-dark me-2" href="/dashboard/applications/{{ $app->id }}/edit"> <span
-            data-feather="edit"></span>
+    <a class="btn btn-outline-dark me-2" href="#"> <span data-feather="mail" class="mb-1"></span>
         Contact</a>
     <form action="/dashboard/applications/{{ $app->id }}" method="POST" class="d-inline">
         @csrf
         @method('delete')
 
         <button class="btn btn-outline-danger" onclick="return confirm('Are you sure want to reject?');">
-            <span data-feather="x-circle"></span> Reject
+            <span data-feather="x-circle" class="mb-1"></span> Reject
         </button>
     </form>
-    <div class="row">
-        <x-box class="col-md-8">
+    <div class="row ">
+        <x-box class="col-md-8 mt-4">
             <h1 class="text-center ">{{ $app->applicant->name }}</h1>
             <h5 class="text-center text-muted mb-3 border-bottom border-2 border-secondary pb-2">
                 {{ $app->applicant->email }}</h5>
