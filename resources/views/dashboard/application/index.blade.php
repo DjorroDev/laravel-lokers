@@ -42,8 +42,9 @@
                                     <i data-feather="eye"></i>
                                 </a>
                                 <button class="showModal badge bg-danger border-0" data-id="{{ $app->id }}"
-                                    data-title="{{ $app->title }}" data-bs-toggle="modal" data-bs-target="#modal"><i
-                                        data-feather="x-circle"></i></button>
+                                    data-title="{{ $app->title }}" data-name="{{ $app->applicant->name }}"
+                                    data-bs-toggle="modal" data-bs-target="#modal"> <i data-feather="x-circle"></i>
+                                    Reject</button>
                             </td>
                         </tr>
                     @endforeach
@@ -51,4 +52,39 @@
             </table>
         </div>
     </div>
+
+    <x-modal>
+        <x-slot name="header">
+            Reject Applicant
+        </x-slot>
+        <x-slot name="body">
+            <p id="name">Are you sure want to Reject</p>
+            <div id="modalBody"></div>
+        </x-slot>
+        <x-slot name="footer">
+            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">cancel</button>
+            <form class="d-inline" id="formModal" method="POST" action="/dashboard/lists/">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-dark">
+                    Reject
+                </button>
+            </form>
+        </x-slot>
+    </x-modal>
+
+    <script>
+        const allShow = document.querySelectorAll('.showModal');
+        const title = document.querySelector('#modalBody');
+        const form = document.querySelector('#formModal')
+        const name = document.querySelector('#name');
+
+        allShow.forEach(show => {
+            show.addEventListener('click', () => {
+                name.innerHTML = 'Are you sure want to reject ' + show.dataset.name + '?';
+                title.innerHTML = 'job\'s title: ' + show.dataset.title;
+                form.action = '/dashboard/applications/' + show.dataset.id;
+            })
+        });
+    </script>
 @endsection
