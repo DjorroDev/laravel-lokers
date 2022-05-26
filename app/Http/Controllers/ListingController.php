@@ -10,7 +10,7 @@ class ListingController extends Controller
     public function index()
     {
         return view('jobs', [
-            'listings' => Listing::with(['user'])->latest()->Filter(request(['search', 'tag']))->paginate(5)
+            'listings' => Listing::with(['user'])->latest()->Filter(request(['search', 'tag']))->paginate(5)->withQueryString()
         ]);
     }
 
