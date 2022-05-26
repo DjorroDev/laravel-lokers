@@ -10,7 +10,7 @@ class ApplicationController extends Controller
     public function index()
     {
         return view('dashboard.application.index', [
-            'apps' => Application::where('receiver_id', auth()->user()->id)->get()
+            'apps' => Application::latest()->where('receiver_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -33,5 +33,12 @@ class ApplicationController extends Controller
         Application::create($validatedData);
 
         return redirect('/jobs')->with('success', 'Jobs application has been applied!');
+    }
+
+    public function destroy(Application $application)
+    {
+        Application::destroy($application->id);
+
+        return redirect('/dashboard/applications')->with('success', 'Applicant has been deleted');
     }
 }

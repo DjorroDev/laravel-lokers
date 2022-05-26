@@ -6,6 +6,7 @@ use App\Http\Controllers\ListingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Application;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +51,4 @@ Route::resource('/dashboard/lists', DashboardListingController::class)->middlewa
 Route::get('/dashboard/applications', [ApplicationController::class, 'index'])->middleware('recruiter');
 Route::get('/dashboard/applications/{application}', [ApplicationController::class, 'show'])->middleware('recruiter');
 Route::post('/jobs/apply/{applications}', [ApplicationController::class, 'store']);
+Route::delete('/dashboard/applications/{application}', [ApplicationController::class, 'destroy']);

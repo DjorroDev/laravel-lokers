@@ -6,6 +6,7 @@
     </div>
     <div class="row">
         <div class="col-md-10">
+            <x-flash-message type="success" />
             <table class="table table-striped my-3 align-middle">
                 <thead class="table-dark">
                     <tr>
