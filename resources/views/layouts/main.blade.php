@@ -11,6 +11,9 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/feather-icons"></script>
 
+    {{-- web icon --}}
+    <link rel="icon" sizes="32x32" href="/favicon.png">
+
     {{-- custom css --}}
     <link rel="stylesheet" href="/css/style.css">
 
@@ -40,9 +43,16 @@
                             <a class="nav-link {{ Request::is('jobs*') ? 'active' : '' }} " href="/jobs">Job
                                 Search</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Post Job</a>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register/company">Post Job</a>
+                            </li>
+                        @endguest
+                        @can('recruit')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/lists">Post Job</a>
+                            </li>
+                        @endcan
                     </ul>
                     <ul class="navbar-nav">
                         @auth
@@ -85,12 +95,6 @@
             @yield('container')
         </div>
     </main>
-
-    {{-- <footer class="text-white">
-        <div class="bg-dark py-2">
-            <p class="container">&copy; 2022 Company, Inc. All rights reserved.</p>
-        </div>
-    </footer> --}}
     <script>
         feather.replace()
     </script>
