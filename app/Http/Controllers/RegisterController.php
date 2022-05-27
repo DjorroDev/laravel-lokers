@@ -28,7 +28,7 @@ class RegisterController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|max:255',
+            'email' => 'required|unique:users|email:dns|max:255',
             'password' => 'required|min:5'
         ]);
 
@@ -45,12 +45,11 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|max:255',
+            'email' => 'required|email:dns|unique:users|max:255',
             'password' => 'required|min:5'
         ]);
 
         // Register as job seeker
-        $validatedData['is_recruiter'] = false;
         $validatedData['password'] = bcrypt($validatedData['password']);
 
 
