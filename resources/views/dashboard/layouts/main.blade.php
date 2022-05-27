@@ -67,6 +67,18 @@
                             </a>
                         </li>
                     </ul>
+                    <h6
+                        class="border-top sidebar-heading d-flex justify-content-between align-items-end px-3 mt-4 mb-1 text-muted">
+                    </h6>
+                    <ul class="nav flex-column justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/jobs">
+                                <span data-feather="arrow-left"></span>
+                                Exit dashboard
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
             </nav>
 
