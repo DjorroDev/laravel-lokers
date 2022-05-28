@@ -10,12 +10,10 @@
                 </div>
                 <div class="carousel-caption d-none d-md-block my-lg-5">
                     <h3>Find your dream job here</h3>
-                    <p>Some representative placeholder content for the first slide.And an even wittier subheading to boot.
-                        Jumpstart
-                        your
-                        marketing
-                        efforts with this example based on Apple's marketing pages.</p>
-                    <a class="btn btn-dark" href="/register">Register Now</a>
+                    <p>uses job matching technology to recommend great jobs and companies to you based on your profile,
+                        skills, experiences, and interest. ✓ Fine tune your recommendations by saving jobs that you like and
+                        discarding jobs you don't to discover more opportunities as your career grows.</p>
+                    <a class="btn btn-secondary" href="/register">Register Now</a>
                 </div>
             </div>
             <div class="row justify-content-center px-3 py-4 d-block d-md-none">
