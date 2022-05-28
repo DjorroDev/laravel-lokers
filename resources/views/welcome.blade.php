@@ -10,9 +10,8 @@
                 </div>
                 <div class="carousel-caption d-none d-md-block my-lg-5">
                     <h3>Find your dream job here</h3>
-                    <p>uses job matching technology to recommend great jobs and companies to you based on your profile,
-                        skills, experiences, and interest. ✓ Fine tune your recommendations by saving jobs that you like and
-                        discarding jobs you don't to discover more opportunities as your career grows.</p>
+                    <p>Various career opportunities await you.
+                        Find the right career and connect with companies anytime, anywhere.</p>
                     <a class="btn btn-secondary" href="/register">Register Now</a>
                 </div>
             </div>
