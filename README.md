@@ -11,7 +11,7 @@ Hi, I am Aufar aka Djorro. In this final project I made a job portal website, Lo
 1. Clone the project
 
     ```
-    Git clone
+    Git clone https://github.com/DjorroDev/laravel-lokers.git
     ```
 
 2. setup `.env` file
